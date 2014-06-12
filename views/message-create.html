@@ -1,5 +1,17 @@
 <div id="msg-create">
     {{ "Message" + " Create Page" }}
     <hr />
-    <a href="#/stream">Back</a>
+    <form name="oclp_form" novalidate ng-submit="oclp_form.$valid && submit()">
+        <p>
+            全城
+            <input type="text" name="field1" class="line_input" size=5 ng-model="model.field1" value="" required ng-maxlength=20 />
+            ！向
+            <input type="text" name="field2" class="line_input" ng-model="model.field2" value="" required ng-maxlength=20 />
+            說不！<br />
+            名稱<input type="text" name="author" class="line_input" ng-model="model.author" value="" required ng-maxlength=20 /><br />
+            <input type="submit" class="line_input" ng-hide="model.isLoading" value="立即發聲">
+            <p ng-show="model.isLoading">loading...</p>
+        </p>
+    </form>
+    <a ng-hide="model.isLoading" href="#/stream">Back</a>
 </div>

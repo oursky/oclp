@@ -1,3 +1,9 @@
+body{
+    width: 100%;
+    margin: 0;
+    background-color: #2AC2F1;
+}
+
 #front-page{
     background-color: #fff;
 }
@@ -13,12 +19,28 @@
 }
 
 #front-page .footer{
-    position: absolute;
-    bottom: 0;
+    margin: 0;
+    padding: 0;
 }
 
 #front-page .footer img{
     width: 100%;
     height: auto;
+    margin: 0;
+    padding: 0;
 }
 
+#msg-create form .line_input {
+    display: inline-block;
+    border: none;
+    color: #333;
+    background: transparent;
+    border-bottom: 2px solid black;
+    padding: 5px 2px 0 2px;
+    min-width: 2em;
+}
+ 
+#msg-create form .line_input:focus {
+    outline: none;
+    border-color: #2AC2F1;
+}
