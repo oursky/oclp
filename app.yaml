@@ -8,6 +8,9 @@ handlers:
 - url: /create
   script: main.application
 
+- url: /message
+  script: main.application
+
 - url: /
   static_dir: static
 
