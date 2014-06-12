@@ -10,10 +10,10 @@
 
             $scope.model.isLoading = true;
             //TODO: POST Message Data
-            alert('TODO - post data: ' + JSON.stringify(data));
+
             $http.post('/create', data)
                 .success(function(data, status, headers, config){
-                    alert('Success: data - ' + JSON.stringify(data));
+                    window.location = '#/message/' + data.uid;
                 })
                 .error(function(data, status, headers, config){
                     alert('Error: status - ' + status);
