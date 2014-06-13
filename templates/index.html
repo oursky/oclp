@@ -8,7 +8,11 @@
     <meta property="og:site_name" content="全城和平佔中"/>
     <meta property="og:image" content="{{ og_image }}"/>
     <meta property="og:url" content="{{ og_url }}"/>
-
+    {% if og_description %}
+    <meta property="og:description" content="{{ og_description }}" />
+    {% else %}
+    <meta property="og:description" content="時代正召喚我們勇敢的回應！這是最壞的時代，這是最好的時代，這是災後重建的時代。和平佔中會堅守民主信念，動員全民爭取自由達致真普選，對抗高牆背後的黑暗，不讓香港沉淪變質。" />
+    {% endif %}
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="/js/angular.min.js"></script>
     <script src="/js/angular-route.min.js"></script>
