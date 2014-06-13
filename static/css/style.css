@@ -2,25 +2,22 @@ body{
     width: 100%;
     margin: 0;
     background-color: #2AC2F1;
+    -webkit-transition: background 1s ease;
+    -moz-transition: background 1s ease;
+    -ms-transition: background 1s ease;
+    -o-transition: background 1s ease;
+    transition: background 1s ease;
+    height: 100%;
+    font-family: "xingothic-tc-w8","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 body.white{
     background-color: #fff;
-    font-family: "xingothic-tc-w8","Helvetica Neue",Helvetica,Arial,sans-serif;
+    
 }
 
 #front-page{
-    background-color: #fff;
-}
-
-#front-page #front-title{
-    width: 100%;
-    cursor: pointer;
-}
-
-#front-page #front-title img{
-    width: 100%;
-    height: auto;
+    background: none;
 }
 
 #front-page .footer{
@@ -45,6 +42,7 @@ body.white{
     max-width: 90%;
     margin: 0 auto;
     position: relative;
+    z-index: 99;
 }
 
 .msg-wrap {
@@ -149,6 +147,11 @@ body.white{
 .stream-list {
     list-style: none;
     padding-left: 0;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
 
 }
 
@@ -156,4 +159,57 @@ body.white{
     margin-bottom: 40px;
 }
 
+/* Landing */
+
+#front-title img {
+    width: 70%;
+    padding-top: 60px;
+}
+
+
+/* Landing effect */
+
+body.white ul.stream-list {
+    opacity: 0;
+}
+
+.front-bg {
+    background: url('/assets/gradient_land_blue.jpg') bottom left repeat-x;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index:0;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    opacity: 0;
+}
+
+.logo {
+     -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.landing-logo {
+    opacity: 0;
+}
+
+body.white .front-bg {
+    opacity: 1;
+}
+
+body.white .landing-logo {
+    opacity: 1;
+}
+
+body.white .home-logo {
+    opacity: 0;
+}
 
