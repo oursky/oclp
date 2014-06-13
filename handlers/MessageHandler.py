@@ -1,6 +1,7 @@
 import cgi, json, time
 import webapp2
 
+from config import JINJA_ENVIRONMENT
 from record.MessageRecord import MessageRecord
 
 class Handler(webapp2.RequestHandler):
@@ -13,7 +14,7 @@ class Handler(webapp2.RequestHandler):
             self.response.write('Not Found')
             return
 
-        query = MessageRecord.query(MessageRecord.uid == int(queryID))
+        query = MessageRecord.query(MessageRecord.uid == queryID)
         queryRecords = query.fetch(1)
 
         # Protection
@@ -36,10 +37,31 @@ class Handler(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'application/json'
         dataStr = cgi.escape(self.request.body)
         data = json.loads(dataStr)
-        data['uid'] = int(time.time() * 1000000)
+        data['uid'] = str(int(time.time()))
 
-        messageRecord = MessageRecord(uid=data['uid'], field1=data['field1'], field2=data['field2'], author=data['author'])
+        messageRecord = MessageRecord(uid=data['uid'],
+            field1=data['field1'],
+            field2=data['field2'],
+            author=data['author'])
         messageRecord.put()
 
         self.response.write(json.dumps({'uid': data['uid']}))
 
+
+class Share(webapp2.RequestHandler):
+    def get(self, message_id):
+        query = MessageRecord.query(MessageRecord.uid == message_id)
+        queryRecords = query.fetch(1)
+
+        # Protection
+        if len(queryRecords) == 0:
+            self.response.status = '302'
+            self.response.headers['Location'] = '/'
+            return
+
+        template_values = {
+            'og_url': 'http://oclp622.com/message/{mid}'.format(mid=message_id),
+            'og_image': 'http://oclp622.com/social-network.png'
+        }
+        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        self.response.write(template.render(template_values))

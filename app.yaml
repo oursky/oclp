@@ -5,16 +5,7 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /$
-  script: main.application
-
-- url: /create
-  script: main.application
-
-- url: /message
-  script: main.application
-
-- url: /stream
+- url: /[^\.]*$
   script: main.application
 
 - url: /

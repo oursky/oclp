@@ -1,17 +1,22 @@
 (function(){
     var app = angular.module('oclp', ['ngRoute', 'messageStream', 'messageCreate', 'messagePage']);
-    app.config(function($routeProvider){
+    app.config(function($routeProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
         $routeProvider
+            .when('', {
+                templateUrl: '/views/message-stream.html',
+                controller: 'MsgStreamController'
+            })
             .when('/', {
-                templateUrl: 'views/message-stream.html',
+                templateUrl: '/views/message-stream.html',
                 controller: 'MsgStreamController'
             })
             .when('/create', {
-                templateUrl: 'views/message-create.html',
+                templateUrl: '/views/message-create.html',
                 controller: 'MsgCreateController'
             })
             .when('/message/:message_id', {
-                templateUrl: 'views/message-page.html',
+                templateUrl: '/views/message-page.html',
                 controller: 'MsgPageController'
             })
             .otherwise({
@@ -35,7 +40,7 @@
             $http.post('/create', data)
                 .success(function(data, status, headers){
                     setTimeout(function(){
-                        window.location = '#/message/' + data.uid;
+                        window.location = '/message/' + data.uid;
                     }, 1000);
                 })
                 .error(function(data, status, headers){
@@ -63,7 +68,7 @@
             })
             .error(function(data, status, headers, config){
                 alert('Error: status - ' + status);
-                window.location = "#/";
+                window.location = "/";
             });
     });
     
@@ -110,7 +115,7 @@
                 })
                 .error(function(data, status){
                     alert('Error: status - ' + status);
-                    window.location = "#/";
+                    window.location = "/";
                 });
         };
 

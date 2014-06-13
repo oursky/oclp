@@ -13,7 +13,8 @@ application = webapp2.WSGIApplication([
     ('/', RootHandler.Handler),
     ('/create', MessageHandler.Handler),
     ('/message', MessageHandler.Handler),
-    ('/stream', StreamHandler.Handler),
+    (r'/message/(.*)', MessageHandler.Share),
+    ('/stream', StreamHandler.Handler)
 ])
 
 if __name__ == "__main__":
