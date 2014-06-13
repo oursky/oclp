@@ -5,3 +5,4 @@ class MessageRecord(ndb.Model):
     field1 = ndb.StringProperty(indexed=False)
     field2 = ndb.StringProperty(indexed=False)
     author = ndb.StringProperty(indexed=False)
+    created_at = ndb.DateTimeProperty(auto_now_add=True)

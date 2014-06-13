@@ -20,7 +20,7 @@ class Handler(webapp2.RequestHandler):
             self.response.headers['Content-Type'] = 'text/plain'
             self.response.write('Not Found')
 
-        query = MessageRecord.query().order(-MessageRecord.uid)
+        query = MessageRecord.query().order(-MessageRecord.created_at)
         queryRecords = query.fetch_page(10, offset=((pageNum - 1) * 10))[0]
 
         recordArray = []

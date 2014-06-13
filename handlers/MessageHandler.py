@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import cgi, json, time
 import webapp2
+import uuid
 
 from config import JINJA_ENVIRONMENT
 from record.MessageRecord import MessageRecord
@@ -38,12 +39,12 @@ class Handler(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'application/json'
         dataStr = cgi.escape(self.request.body)
         data = json.loads(dataStr)
-        data['uid'] = str(int(time.time()))
+        data['uid'] = uuid.uuid4().hex[:10]
 
         messageRecord = MessageRecord(uid=data['uid'],
-            field1=data['field1'],
-            field2=data['field2'],
-            author=data['author'])
+            field1=data['field1'][:20],
+            field2=data['field2'][:20],
+            author=data['author'][:20])
         messageRecord.put()
 
         self.response.write(json.dumps({'uid': data['uid']}))
