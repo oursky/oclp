@@ -1,7 +1,7 @@
 import os
 import webapp2
 
-from main import JINJA_ENVIRONMENT
+from config import JINJA_ENVIRONMENT
 
 class Handler(webapp2.RequestHandler):
     def get(self):
