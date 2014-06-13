@@ -1,6 +1,15 @@
 <div id="msg-stream">
-    {{ "Message" + " Stream" }}, {{ "Page #" + model.page_id }}
-    <hr />
+    <ul>
+        <li ng-repeat="perRow in model.result">
+            全城
+            <span class="field">{{ perRow.field1 || "____" }}</span>
+            ！向
+            <span class="field">{{ perRow.field2 || "____"}}</span>
+            說不！<br />
+            名稱
+            <span class="field">{{ perRow.author || "____" }}</span>
+        </li>
+    </ul>
     <a href="#/create">我要發聲</a><br />
     <a href="#/">Back</a>
 </div>

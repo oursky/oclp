@@ -94,9 +94,9 @@ class StreamHandler(webapp2.RequestHandler):
             perRecord = queryRecords[i]
 
             resultStr += "{"
-            resultStr += "\"field1\": %s, " % perRecord.field1
-            resultStr += "\"field2\": %s, " % perRecord.field2
-            resultStr += "\"author\": %s, " % perRecord.author
+            resultStr += "\"field1\": \"%s\", " % perRecord.field1
+            resultStr += "\"field2\": \"%s\", " % perRecord.field2
+            resultStr += "\"author\": \"%s\", " % perRecord.author
             resultStr += "\"uid\": %s }" % perRecord.uid
 
             if i != len(queryRecords) - 1:
