@@ -49,7 +49,7 @@ body{
 
 .logo {
     background-image: url('../assets/home-logo.svg');
-    position: absolute;
+    position: fixed;
     width: 137px;
     height: 75px;
     top:30px;
@@ -63,7 +63,7 @@ body{
 .btn-create {
     width: 167px;
     height: 63px;
-    position: absolute;
+    position: fixed;
     top: 155px;
     right: 30px;
 }
