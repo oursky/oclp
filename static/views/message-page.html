@@ -1,12 +1,11 @@
-<div id="msg-page">
-    <p>
-        全城
-        <span class="field">{{ model.field1 || "____" }}</span>
-        ！向
-        <span class="field">{{ model.field2 || "____"}}</span>
-        說不！<br />
-        名稱
-        <span class="field">{{ model.author || "____" }}</span>
+<div id="msg-page" class="msg-wrap">
+    <p class="tag-line">
+         <img src="assets/tag-1.svg">
+        <span class="field view-field">{{ model.field1 || "____" }}</span>
+        <img src="assets/tag-2.svg">
+        <span class="field view-field">{{ model.field2 || "____"}}</span>
+         <img src="assets/tag-3.svg">         
+        <span class="field view-name">{{ model.author || "____" }}</span>
     </p>
-    <a href="#/stream">Back</a>
+
 </div>

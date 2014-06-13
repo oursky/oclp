@@ -1,15 +1,24 @@
-<div id="msg-stream">
-    <ul>
-        <li ng-repeat="perRow in model.result">
-            全城
-            <span class="field">{{ perRow.field1 || "____" }}</span>
-            ！向
-            <span class="field">{{ perRow.field2 || "____"}}</span>
-            說不！<br />
-            名稱
-            <span class="field">{{ perRow.author || "____" }}</span>
+
+<div id="msg-stream" class="msg-wrap">
+
+
+    <ul class="stream-list">
+        <li ng-repeat="perRow in model.result" >
+            <p class="tag-line">
+
+              <img src="assets/tag-1.svg">
+                <span class="field view-field">{{ perRow.field1 || "____" }}</span>
+                <img src="assets/tag-2.svg">
+                <span class="field view-field">{{ perRow.field2 || "____"}}</span>
+                 <img src="assets/tag-3.svg">         
+                <span class="field view-name">{{ perRow.author || "____" }}</span>
+          
+            </p>
         </li>
     </ul>
-    <a href="#/create">我要發聲</a><br />
     <a href="#/">Back</a>
+
 </div>
+
+<a href="#/create" class="btn-create"><img src="assets/btn-create.svg"></a>
+
