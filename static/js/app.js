@@ -100,7 +100,7 @@
                     $scope.model.result = $scope.model.result.concat(data.result);
 
                     // checking whether the window is scrollable
-                    if($('body').height() < $(window).height()){
+                    if($('body').height() < $(window).height() && pageNum < 10){
                         $scope.loadMore();
                     }
                 })
