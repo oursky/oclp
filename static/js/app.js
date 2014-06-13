@@ -29,6 +29,8 @@
     var app = angular.module('messageCreate', []);
     app.controller('MsgCreateController', function($scope, $http){
         $scope.model = {};
+        $('body').removeClass('white');
+        
         $scope.submit = function(){
             var data = {};
             data.field1 = $scope.model.field1;
@@ -55,6 +57,8 @@
     var app = angular.module('messagePage', []);
     app.controller('MsgPageController', function($scope, $routeParams, $http){
         $scope.model = {};
+
+        $('body').removeClass('white');
         $scope.model.message_id = $routeParams.message_id;
 
         $http.get('/message?id=' + $scope.model.message_id)
@@ -84,15 +88,17 @@
         $scope.model.isLoading = false;
         $scope.model.isLoadEnd = false;
 
+        $('body').addClass('white');
+
         //set front page as height as viewport and color change
         $('#front-page').height($(window).height());
 
         $(window).scroll(function(){
-            if($(window).scrollTop() > $(window).height() / 2){
-                $('body').addClass('blue');
-            }
             if($(window).scrollTop() < $(window).height() / 2){
-                $('body').removeClass('blue');
+                $('body').addClass('white');
+            }
+            if($(window).scrollTop() > $(window).height() / 2){
+                $('body').removeClass('white');
             }
         });
         

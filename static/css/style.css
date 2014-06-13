@@ -1,11 +1,11 @@
 body{
     width: 100%;
     margin: 0;
-    background-color: #fff;
+    background-color: #2AC2F1;
 }
 
-body.blue{
-    background-color: #2AC2F1;
+body.white{
+    background-color: #fff;
     font-family: "xingothic-tc-w8","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
