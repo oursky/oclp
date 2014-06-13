@@ -1,5 +1,12 @@
 <div id="msg-page">
-    {{ "Message" + " Page" }}{{ ", ID: " + model.message_id }}
-    <hr />
+    <p>
+        全城
+        <span class="field">{{ model.field1 || "____" }}</span>
+        ！向
+        <span class="field">{{ model.field2 || "____"}}</span>
+        說不！<br />
+        名稱
+        <span class="field">{{ model.author || "____" }}</span>
+    </p>
     <a href="#/stream">Back</a>
 </div>

@@ -49,12 +49,15 @@ class QueryHandler(webapp2.RequestHandler):
             self.response.write('Not Found')
             return
 
+        queryRecord = queryRecords[0]
+
         self.response.status = '200'
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write('{"query": %s, ' % queryID)
         self.response.write('"field1": "%s", ' % queryRecord.field1 )
         self.response.write('"field2": "%s", ' % queryRecord.field2 )
         self.response.write('"author": "%s", ' % queryRecord.author )
+        
         self.response.write('"success": true }')
 
 application = webapp2.WSGIApplication([

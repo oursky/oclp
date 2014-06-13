@@ -9,13 +9,14 @@
             data.author = $scope.model.author;
 
             $scope.model.isLoading = true;
-            //TODO: POST Message Data
 
             $http.post('/create', data)
-                .success(function(data, status, headers, config){
-                    window.location = '#/message/' + data.uid;
+                .success(function(data, status, headers){
+                    setTimeout(function(){
+                        window.location = '#/message/' + data.uid;
+                    }, 1000);
                 })
-                .error(function(data, status, headers, config){
+                .error(function(data, status, headers){
                     alert('Error: status - ' + status);
                     $scope.model.isLoading = false;
                 });
