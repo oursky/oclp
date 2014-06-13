@@ -1,6 +1,10 @@
 body{
     width: 100%;
     margin: 0;
+    background-color: #fff;
+}
+
+body.blue{
     background-color: #2AC2F1;
 }
 

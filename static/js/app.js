@@ -3,9 +3,6 @@
     app.config(function($routeProvider){
         $routeProvider
             .when('/', {
-                templateUrl: 'views/front-page.html'
-            })
-            .when('/stream', {
                 templateUrl: 'views/message-stream.html',
                 controller: 'MsgStreamController'
             })
@@ -81,6 +78,18 @@
         $scope.model.result = [];
         $scope.model.isLoading = false;
         $scope.model.isLoadEnd = false;
+
+        //set front page as height as viewport and color change
+        $('#front-page').height($(window).height());
+
+        $(window).scroll(function(){
+            if($(window).scrollTop() > $(window).height() / 2){
+                $('body').addClass('blue');
+            }
+            if($(window).scrollTop() < $(window).height() / 2){
+                $('body').removeClass('blue');
+            }
+        });
         
         $scope.loadPage = function(pageNum){
             pageNum = pageNum || 1;
@@ -98,11 +107,6 @@
                     }
 
                     $scope.model.result = $scope.model.result.concat(data.result);
-
-                    // checking whether the window is scrollable
-                    if($('body').height() < $(window).height() && pageNum < 10){
-                        $scope.loadMore();
-                    }
                 })
                 .error(function(data, status){
                     alert('Error: status - ' + status);
