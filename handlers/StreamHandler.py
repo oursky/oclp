@@ -1,4 +1,5 @@
 import webapp2
+import json
 
 from record.MessageRecord import MessageRecord
 
@@ -22,25 +23,20 @@ class Handler(webapp2.RequestHandler):
         query = MessageRecord.query().order(-MessageRecord.uid)
         queryRecords = query.fetch_page(10, offset=((pageNum - 1) * 10))[0]
 
-        resultStr = "["
+        recordArray = []
 
-        for i in range(len(queryRecords)):
-            perRecord = queryRecords[i]
+        for perQueryRecord in queryRecords:
+            perRecord = {}
+            perRecord['field1'] = perQueryRecord.field1
+            perRecord['field2'] = perQueryRecord.field2
+            perRecord['author'] = perQueryRecord.author
+            perRecord['uid'] = perQueryRecord.uid
+            recordArray.append(perRecord)
 
-            resultStr += "{"
-            resultStr += "\"field1\": \"%s\", " % perRecord.field1
-            resultStr += "\"field2\": \"%s\", " % perRecord.field2
-            resultStr += "\"author\": \"%s\", " % perRecord.author
-            resultStr += "\"uid\": %s }" % perRecord.uid
-
-            if i != len(queryRecords) - 1:
-                resultStr += ","
-
-        resultStr += "]"
+        result = {}
+        result['count'] = len(recordArray)
+        result['result'] = recordArray
 
         self.response.status = '200'
         self.response.headers['Content-Type'] = 'application/json'
-        self.response.write('{"count": %d, ' % len(queryRecords))
-        self.response.write('"result": %s, ' % resultStr)
-        
-        self.response.write('"success": true }')
+        self.response.write(json.dumps(result))

@@ -23,16 +23,14 @@ class Handler(webapp2.RequestHandler):
             self.response.write('Not Found')
             return
 
-        queryRecord = queryRecords[0]
+        queryRecord = {}
+        queryRecord['field1'] = queryRecords[0].field1
+        queryRecord['field2'] = queryRecords[0].field2
+        queryRecord['author'] = queryRecords[0].author
 
         self.response.status = '200'
         self.response.headers['Content-Type'] = 'application/json'
-        self.response.write('{"query": %s, ' % queryID)
-        self.response.write('"field1": "%s", ' % queryRecord.field1 )
-        self.response.write('"field2": "%s", ' % queryRecord.field2 )
-        self.response.write('"author": "%s", ' % queryRecord.author )
-        
-        self.response.write('"success": true }')
+        self.response.write(json.dumps(queryRecord))
 
     def post(self):
         self.response.headers['Content-Type'] = 'application/json'
@@ -43,4 +41,5 @@ class Handler(webapp2.RequestHandler):
         messageRecord = MessageRecord(uid=data['uid'], field1=data['field1'], field2=data['field2'], author=data['author'])
         messageRecord.put()
 
-        self.response.write("{\"uid\": %d}" % data['uid'])
+        self.response.write(json.dumps({'uid': data['uid']}))
+
