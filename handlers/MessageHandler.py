@@ -62,7 +62,7 @@ class Share(webapp2.RequestHandler):
 
         template_values = {
             'og_url': 'http://oclp622.com/message/{mid}'.format(mid=message_id),
-            'og_image': 'http://oclp622.com/social-network.png',
+            'og_image': 'http://oclp622.com/assets/social_network.png',
             'og_description': u'全城{up_for}！向{no_to}說不！ － {author}'.format(
                 up_for=queryRecords[0].field1,
                 no_to=queryRecords[0].field2,
