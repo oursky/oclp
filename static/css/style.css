@@ -70,6 +70,25 @@ body.white{
     right: 30px;
 }
 
+.btn-info {
+    width: 167px;
+    height: 63px;
+    position: fixed;
+    top: 265px;
+    right: -23px;
+}
+
+.msg-fb-share {
+    display: block;
+    width: 167px;
+    height: 63px;
+}
+
+.msg-info {
+    display: block;
+    width: 167px;
+    height: 63px;
+}
 
 /* Form */
 

@@ -1,10 +1,17 @@
 <div id="msg-page" class="msg-wrap">
     <p class="tag-line">
-         <img src="/assets/tag-1.svg">
+        <img src="/assets/tag-1.svg">
         <span class="field view-field">{{ model.field1 || "____" }}</span>
         <img src="/assets/tag-2.svg">
         <span class="field view-field">{{ model.field2 || "____"}}</span>
          <img src="/assets/tag-3.svg">         
         <span class="field view-name">{{ model.author || "____" }}</span>
     </p>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Foclp622.com%2Fmessage%2F{{ model.message_id }}"
+    target="_blank" class="msg-fb-share">
+        <img src="/assets/button_share.svg"></a>
+    <a href="https://www.popvote.hk/project/vote_622/"
+    target="_blank" class="msg-info">
+        <img src="/assets/button_info.svg"></a>
+        
 </div>
