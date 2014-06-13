@@ -11,7 +11,8 @@ from handlers import RootHandler, MessageHandler, StreamHandler
 
 application = webapp2.WSGIApplication([
     ('/', RootHandler.Handler),
-    ('/create', MessageHandler.Handler),
+    ('/create', RootHandler.Handler),
+    webapp2.Route(r'/create', handler='MessageHandler.Handler', name='post', methods=['POST']),
     ('/message', MessageHandler.Handler),
     (r'/message/(.*)', MessageHandler.Share),
     ('/stream', StreamHandler.Handler)
