@@ -1,8 +1,13 @@
+import os
 import webapp2
+
+from main import JINJA_ENVIRONMENT
 
 class Handler(webapp2.RequestHandler):
     def get(self):
-        self.response.status = '302'
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.headers['Location'] = '/index.html'
-        self.response.write('Redirecting...')
+        template_values = {
+            'og:url': 'http://oclp622.com',
+            'og:image': 'http://oclp622.com/social-network.png'
+        }
+        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        self.response.write(template.render(template_values))
