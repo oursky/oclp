@@ -25,3 +25,77 @@
             });
     });
 })();
+
+(function(){
+    var app = angular.module('messageCreate', []);
+    app.controller('MsgCreateController', function($scope, $http){
+        $scope.model = {};
+        $scope.submit = function(){
+            var data = {};
+            data.field1 = $scope.model.field1;
+            data.field2 = $scope.model.field2;
+            data.author = $scope.model.author;
+
+            $scope.model.isLoading = true;
+
+            $http.post('/create', data)
+                .success(function(data, status, headers){
+                    setTimeout(function(){
+                        window.location = '#/message/' + data.uid;
+                    }, 1000);
+                })
+                .error(function(data, status, headers){
+                    alert('Error: status - ' + status);
+                    $scope.model.isLoading = false;
+                });
+        };
+    });
+})();
+
+(function(){
+    var app = angular.module('messagePage', []);
+    app.controller('MsgPageController', function($scope, $routeParams, $http){
+        $scope.model = {};
+        $scope.model.message_id = $routeParams.message_id;
+
+        $http.get('/message?id=' + $scope.model.message_id)
+            .success(function(data, status, headers, config){
+
+                $scope.model.field1 = data.field1;
+                $scope.model.field2 = data.field2;
+                $scope.model.author = data.author;
+                $scope.model.datetime = new Date(Math.round($scope.model.message_id / 1000));
+
+            })
+            .error(function(data, status, headers, config){
+                alert('Error: status - ' + status);
+                window.location = "#/";
+            });
+    });
+    
+})();
+
+(function(){
+    var app = angular.module('messageStream', []);
+
+    app.controller('MsgStreamController', function($scope, $routeParams, $http){
+        $scope.model = {};
+        $scope.model.page_id = $routeParams.page_id;
+        $scope.model.result = [];
+
+        $http.get('/stream?page=' + $scope.model.page_id)
+            .success(function(data, status, headers, config){
+                $scope.model.result = data.result;
+
+                for (var i = $scope.model.result.length - 1; i >= 0; i--) {
+                    $scope.model.result[i].datetime = new Date(Math.round($scope.model.result[i].uid / 1000));
+                };
+
+                console.log($scope.model.result);
+            })
+            .error(function(data, status){
+                alert('Error: status - ' + status);
+                window.location = "#/";
+            });
+    });
+})();
