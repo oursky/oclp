@@ -30,7 +30,7 @@
     app.controller('MsgCreateController', function($scope, $http){
         $scope.model = {};
         $('body').removeClass('white');
-        
+
         $scope.submit = function(){
             var data = {};
             data.field1 = $scope.model.field1;
@@ -101,6 +101,10 @@
                 $('body').removeClass('white');
             }
         });
+
+        $scope.unsetScroll = function(){
+            $(window).unbind('scroll');
+        };
         
         $scope.loadPage = function(pageNum){
             pageNum = pageNum || 1;
