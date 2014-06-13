@@ -6,9 +6,6 @@
                 templateUrl: 'views/front-page.html'
             })
             .when('/stream', {
-                redirectTo: '/stream/1'
-            })
-            .when('/stream/:page_id', {
                 templateUrl: 'views/message-stream.html',
                 controller: 'MsgStreamController'
             })
@@ -76,26 +73,59 @@
 })();
 
 (function(){
-    var app = angular.module('messageStream', []);
+    var app = angular.module('messageStream', ['infinite-scroll']);
 
     app.controller('MsgStreamController', function($scope, $routeParams, $http){
         $scope.model = {};
-        $scope.model.page_id = $routeParams.page_id;
+        $scope.model.page_num = 0;
         $scope.model.result = [];
+        $scope.model.isLoading = false;
+        $scope.model.isLoadEnd = false;
+        
+        $scope.loadPage = function(pageNum){
+            pageNum = pageNum || 1;
 
-        $http.get('/stream?page=' + $scope.model.page_id)
-            .success(function(data, status, headers, config){
-                $scope.model.result = data.result;
+            $http.get('/stream?page=' + pageNum)
+                .success(function(data, status, headers, config){
+                    $scope.model.isLoading = false;
 
-                for (var i = $scope.model.result.length - 1; i >= 0; i--) {
-                    $scope.model.result[i].datetime = new Date(Math.round($scope.model.result[i].uid / 1000));
-                };
+                    if(data.count == 0){
+                        $scope.model.isLoadEnd = true;
+                    }
 
-                console.log($scope.model.result);
-            })
-            .error(function(data, status){
-                alert('Error: status - ' + status);
-                window.location = "#/";
+                    for (var i = data.result.length - 1; i >= 0; i--) {
+                        data.result[i].datetime = new Date(Math.round(data.result[i].uid / 1000));
+                    }
+
+                    $scope.model.result = $scope.model.result.concat(data.result);
+
+                    // checking whether the window is scrollable
+                    if($('body').height() < $(window).height()){
+                        $scope.loadMore();
+                    }
+                })
+                .error(function(data, status){
+                    alert('Error: status - ' + status);
+                    window.location = "#/";
+                });
+        };
+
+        $scope.loadMore = function(){
+            $scope.model.isLoading = true;
+            $scope.model.page_num += 1;
+            $scope.loadPage($scope.model.page_num);
+        };
+    });
+
+    app.directive('whenScrolled', function() {
+        return function(scope, elm, attr) {
+            var raw = elm[0];
+            
+            elm.bind('scroll', function() {
+                if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+                    scope.$apply(attr.whenScrolled);
+                }
             });
+        };
     });
 })();

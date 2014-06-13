@@ -1,4 +1,4 @@
-<div id="msg-stream">
+<div id="msg-stream" infinite-scroll='loadMore()' infinite-scroll-distance='2' infinite-scroll-disabled='model.isLoading || model.isLoadEnd'>
     <ul>
         <li ng-repeat="perRow in model.result">
             全城
