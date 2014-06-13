@@ -12,6 +12,13 @@ class MessageRecord(ndb.Model):
     author = ndb.StringProperty(indexed=False)
     # date = ndb.DateTimeProperty(auto_now_add=True)
 
+class RootHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.status = '302'
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.headers['Location'] = '/index.html'
+        self.response.write('Redirecting...')
+
 class CreateHandler(webapp2.RequestHandler):
     def get(self):
         self.response.status = '404'
@@ -61,6 +68,7 @@ class QueryHandler(webapp2.RequestHandler):
         self.response.write('"success": true }')
 
 application = webapp2.WSGIApplication([
+    ('/', RootHandler),
     ('/create', CreateHandler),
     ('/message', QueryHandler),
 ])
