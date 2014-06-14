@@ -23,6 +23,7 @@ def generate_image(field1, field2, author, scale=1):
     AUTHOR_FONT_SIZE = 25 * scale
     LOGO_FILE = 'home-logo-300.png' if scale >= 2 else 'home-logo-150.png'
     LOGO_SIZE = (300, 163) if scale >= 2 else (150, 82)
+    LOGO_MARGIN = (15 * scale, 15 * scale)
 
     font_file = app_files_path('lihei-pro.ttf')
     font = ImageFont.truetype(font_file, FONT_SIZE)
@@ -30,8 +31,8 @@ def generate_image(field1, field2, author, scale=1):
     draw = ImageDraw.Draw(image)
 
     logo = Image.open(app_files_path(LOGO_FILE))
-    logo_pos = (IMAGE_SIZE[0] - 10 * scale - LOGO_SIZE[0],
-            (IMAGE_SIZE[1] - 10 * scale - LOGO_SIZE[1]))
+    logo_pos = (IMAGE_SIZE[0] - LOGO_MARGIN[0] - LOGO_SIZE[0],
+            (IMAGE_SIZE[1] - LOGO_MARGIN[1] - LOGO_SIZE[1]))
     image.paste(logo, logo_pos, logo)
 
     pos = PADDING
