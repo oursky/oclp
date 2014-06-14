@@ -19,6 +19,7 @@ def generate_image(field1, field2, author, scale=1):
     LABEL_COLOR = (255, 255, 255)
     LINE_WIDTH = 5 * scale
     LINE_SPACING = 25 * scale
+    LINE_COLOR = (255, 255, 255)
     FONT_SIZE = 60 * scale
     AUTHOR_FONT_SIZE = 25 * scale
     LOGO_FILE = 'home-logo-300.png' if scale >= 2 else 'home-logo-150.png'
@@ -45,7 +46,8 @@ def generate_image(field1, field2, author, scale=1):
     ts = draw.textsize(t, font=font)
     draw.text(pos, t, USER_COLOR, font=font)
 
-    draw.line((pos[0], pos[1]+ts[1]+8, pos[0]+ts[0], pos[1]+ts[1]+8), fill=0, width=LINE_WIDTH)
+    draw.line((pos[0], pos[1]+ts[1]+8, pos[0]+ts[0], pos[1]+ts[1]+8),
+            fill=LINE_COLOR, width=LINE_WIDTH)
 
     pos = (pos[0] + ts[0], pos[1])
     t = u"!"
@@ -62,7 +64,8 @@ def generate_image(field1, field2, author, scale=1):
     ts = draw.textsize(t, font=font)
     draw.text(pos, t, USER_COLOR, font=font)
 
-    draw.line((pos[0], pos[1]+ts[1]+8, pos[0]+ts[0], pos[1]+ts[1]+8), fill=0, width=LINE_WIDTH)
+    draw.line((pos[0], pos[1]+ts[1]+8, pos[0]+ts[0], pos[1]+ts[1]+8),
+            fill=LINE_COLOR, width=LINE_WIDTH)
 
     pos = (pos[0] + ts[0], pos[1])
     t = u"說不"
@@ -79,7 +82,8 @@ def generate_image(field1, field2, author, scale=1):
     t = author
     ts = draw.textsize(t, font=author_font)
     draw.text((pos[0], pos[1]), t, USER_COLOR, font=author_font)
-    draw.line((pos[0], pos[1]+ts[1]+8, pos[0]+ts[0], pos[1]+ts[1]+8), fill=0, width=3 * scale)
+    draw.line((pos[0], pos[1]+ts[1]+8, pos[0]+ts[0], pos[1]+ts[1]+8),
+            fill=LINE_COLOR, width=3 * scale)
     return image
 
 def generate_image_png(*args, **kwargs):
