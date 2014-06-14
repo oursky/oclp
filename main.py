@@ -15,7 +15,8 @@ application = webapp2.WSGIApplication([
     ('/create', RootHandler.Handler),
     ('/message', MessageHandler.Handler),
     (r'/message/(.*)', MessageHandler.Share),
-    (r'/image/(.*)', MessageHandler.Image),
+    (r'/image/([^\/]*)', MessageHandler.Image),
+    (r'/image/([^\/]*)/large', MessageHandler.LargeImage),
     ('/stream', StreamHandler.Handler)
 ])
 

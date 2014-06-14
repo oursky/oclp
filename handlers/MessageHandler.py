@@ -77,6 +77,9 @@ class Share(webapp2.RequestHandler):
 
 class Image(webapp2.RequestHandler):
     def get(self, message_id):
+        self.write_image(message_id, 1)
+
+    def write_image(self, message_id, scale=1):
         query = MessageRecord.query(MessageRecord.uid == message_id)
         queryRecords = query.fetch(1)
 
@@ -88,6 +91,10 @@ class Image(webapp2.RequestHandler):
             return
         
         blob = generate_image_png(queryRecords[0].field1, \
-                queryRecords[0].field2, queryRecords[0].author)
+                queryRecords[0].field2, queryRecords[0].author, scale)
         self.response.headers['Content-Type'] = 'image/png'
         self.response.write(blob)
+
+class LargeImage(Image):
+    def get(self, message_id):
+        self.write_image(message_id, 2)
