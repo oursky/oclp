@@ -13,7 +13,7 @@ def app_files_path(filename):
 
 def generate_image(field1, field2, author, scale=1):
     PADDING = (30 * scale, 30 * scale)
-    IMAGE_SIZE = (600 * scale, 315 * scale) # width, height
+    IMAGE_SIZE = (600 * scale, 600 * scale) # width, height
     BG_COLOR = (42, 194, 241) # rgb
     USER_COLOR = (0, 0, 0)
     LABEL_COLOR = (255, 255, 255)
@@ -32,10 +32,10 @@ def generate_image(field1, field2, author, scale=1):
 
     logo = Image.open(app_files_path(LOGO_FILE))
     logo_pos = (IMAGE_SIZE[0] - LOGO_MARGIN[0] - LOGO_SIZE[0],
-            (IMAGE_SIZE[1] - LOGO_MARGIN[1] - LOGO_SIZE[1]))
+            (IMAGE_SIZE[1] - LOGO_MARGIN[1] - LOGO_SIZE[1] - 158 * scale))
     image.paste(logo, logo_pos, logo)
 
-    pos = PADDING
+    pos = (PADDING[0], PADDING[1] + 158 * scale)
     t = u"全城"
     ts = draw.textsize(t, font=font)
     draw.text(pos, t, LABEL_COLOR, font=font)
