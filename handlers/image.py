@@ -25,7 +25,7 @@ def generate_image(field1, field2, author, scale=1):
     LOGO_SIZE = (300, 163) if scale >= 2 else (150, 82)
     LOGO_MARGIN = (15 * scale, 15 * scale)
 
-    font_file = app_files_path('lihei-pro.ttf')
+    font_file = app_files_path('heiti.ttc')
     font = ImageFont.truetype(font_file, FONT_SIZE)
     image = Image.new('RGB', IMAGE_SIZE, BG_COLOR)
     draw = ImageDraw.Draw(image)
@@ -48,7 +48,7 @@ def generate_image(field1, field2, author, scale=1):
     draw.line((pos[0], pos[1]+ts[1]+8, pos[0]+ts[0], pos[1]+ts[1]+8), fill=0, width=LINE_WIDTH)
 
     pos = (pos[0] + ts[0], pos[1])
-    t = u"！"
+    t = u"!"
     ts = draw.textsize(t, font=font)
     draw.text((pos[0], pos[1]), t, LABEL_COLOR, font=font)
 
@@ -70,7 +70,7 @@ def generate_image(field1, field2, author, scale=1):
     draw.text((pos[0], pos[1]), t, LABEL_COLOR, font=font)
 
     pos = (pos[0] + ts[0], pos[1])
-    t = u"！"
+    t = u"!"
     ts = draw.textsize(t, font=font)
     draw.text((pos[0], pos[1]), t, LABEL_COLOR, font=font)
 
