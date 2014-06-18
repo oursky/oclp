@@ -152,18 +152,19 @@ a {
 /* View page */
 
 .view-field {
-    font-size: 66px;
+    font-size: 61px;
      font-weight: 800;
      border-bottom: 9px solid #fff;
-     padding: 0 10px;
+     padding: 0;
      vertical-align: 7%;
 }
 
 .view-name {
-    font-size: 18px;
-    border-bottom:5px solid #fff;
-    padding: 0 10px;
-    margin: 0 10px;
+    font-size: 31px;
+    border-bottom:9px solid #fff;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
 }
 
 /* Stream list */
