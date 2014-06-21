@@ -18,6 +18,7 @@ body.white{
 
 #front-page{
     background: none;
+    position: relative;
 }
 
 #front-page .footer{
@@ -93,6 +94,25 @@ a {
     display: block;
     width: 167px;
     height: 63px;
+}
+
+
+.scroll {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+
+body.white .scroll {
+    opacity: 1;
 }
 
 /* Form */
