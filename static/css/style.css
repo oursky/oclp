@@ -38,6 +38,14 @@ a {
     text-decoration: none;
 }
 
+hr {
+    color: #fff;
+    background-color: #fff;
+    height: 1px;
+    border:0; 
+    margin: 20px 0;
+}
+
 
 
 
@@ -268,5 +276,61 @@ body.white .landing-logo {
 
 body.white .home-logo {
     opacity: 0;
+}
+
+/* info */
+
+.info-tag {
+    margin: 40px 0 40px 40px;
+}
+
+.info-col {
+    width: 400px;
+    height: auto;
+    float: left;
+    padding-left: 20px;
+    padding-bottom: 50px;
+    margin-bottom: 60px;
+}
+
+.info-content {
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 40px;
+}
+
+.info-content h4 {
+    font-size: 21px;
+}
+
+.info-content h4.indent {
+    text-indent: -20px;
+}
+
+.info-border {
+    border-left: 1px solid #fff;
+}
+
+
+/* typo */
+
+.margin-b-clear {
+    margin-bottom: 0;
+}
+
+.margin-t-clear {
+    margin-top: 0;
+}
+
+.margin-t {
+    margin-top: 60px;
+}
+
+.margin-b {
+    margin-bottom: 60px;
+}
+
+.u-line {
+    border-bottom: 5px solid #fff;
 }
 
