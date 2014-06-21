@@ -201,11 +201,19 @@ body.white .scroll {
 }
 
 .stream-list li {
-    margin-bottom: 40px;
+    margin-bottom: 0;
 }
 
 .stream-list li a:hover p.tag-line {
     background: #23bae9;
+}
+
+.stream-share {
+    opacity: 0;
+}
+
+.stream-list li:hover .stream-share {
+    opacity: 1;
 }
 
 /* Landing */
