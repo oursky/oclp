@@ -204,6 +204,10 @@ body.white .scroll {
     margin-bottom: 40px;
 }
 
+.stream-list li a:hover p.tag-line {
+    background: #23bae9;
+}
+
 /* Landing */
 
 #front-title img {
